@@ -1,0 +1,50 @@
+<% if @newbook.errors.any? %>
+    <div class="error">
+      <h3><%= @newbook.errors.count %> errors occurred!</h3>
+      <ul>
+        <% @newbook.errors.full_messages.each do |message| %>
+          <li class="error-message"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+
+
+
+<div class="container mt-4">
+  <div class="row">
+
+    <div class="col-md-3">
+       <%= render 'users/user' %>
+       <%= render 'books/new' %>
+    </div>
+
+    <div class="col-md-8 offset-md-1">
+      <h1>Books</h1>
+      <table class="w-100">
+        <thead class="border-top border-bottom border-seconddark">
+          <tr>
+            <th></th><th class="py-3">Title</th><th>Opinion</th>
+          </tr>
+        </thead>
+        <% @books.each do |book| %>
+        <tbody>
+          <tr class="border-bottom border-seconddark">
+            <td class="pt-4">
+               <%= link_to user_path(book.user.id) do %>
+                 <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+               <% end %>
+            <td>
+              <%= link_to book_path(book.id) do %>
+              <span><%= book.title %></span>
+              <% end %>
+            </td>
+            <td><span><%= book.body %></span></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+
+    </div>
+</div>

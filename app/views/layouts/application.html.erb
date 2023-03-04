@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+     <header class=" bg-dark">
+      <div class="container d-flex">
+
+         <h1> <%= link_to('Bookers', root_path, class: 'text-white')%></h1>
+
+             <nav class="nav ml-auto">
+
+                  <% if user_signed_in? %>
+                  <li class="nav-item mr-4 mt-3">
+                     <%= link_to user_path(current_user.id) do %>
+                       <i class="fas fa-home text-white"></i><span class="text-white"> Home</span>
+                     <% end %>
+                  </li>
+                  <li class="nav-item mr-4 mt-3">
+                     <%= link_to "/users" do %>
+                       <i class="fas fa-users text-white"></i><span class="text-white"> Users</span>
+                     <% end %>
+                  </li>
+                  <li class="nav-item mr-4 mt-3">
+                     <%= link_to "/books" do %>
+                       <i class="fas fa-book-open text-white"></i><span class="text-white" > Books</span>
+                     <% end %>
+                  </li>
+                  <li class="nav-item mr-4 mt-3">
+                      <%= link_to destroy_user_session_path, method: :delete do %>
+                        <i class="fas fa-sign-out-alt text-white"></i><span class="text-white"> Log out</span>
+                      <% end %>
+                  </li>
+
+                  <% else %>
+                    <li class="nav-item mr-4 mt-3">
+                       <%= link_to root_path do %>
+                        <i class="fas fa-home text-white"></i><span class="text-white"> Home</span>
+                      <% end %>
+                    </li>
+
+                    <li class="nav-item mr-4 mt-3">
+                      <%= link_to about_path do %>
+                        <i class="fas fa-link text-white"></i><span class="text-white"> About</span>
+                      <% end %>
+                    </li>
+
+                    <li class="nav-item mr-4 mt-3">
+                      <%= link_to new_user_registration_path do %>
+                        <i class="fas fa-user-plus text-white"></i><span class="text-white"> Sign up</span>
+                      <% end %>
+                    </li>
+
+                    <li class="nav-item mr-4 mt-3">
+                      <%= link_to new_user_session_path do %>
+                        <i class="fas fa-sign-in-alt text-white"></i><span class="text-white"> Log in</span>
+                       <% end %>
+                    </li>
+
+                  <% end %>
+             </nav>
+       </div>
+  </header>
+  <body>
+    <div>
+     <%= flash[:notice] %>
+    </div>
+    <%= yield %>
+  </body>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-center mb-0">CopyRight bookers</p>
+      </div>
+    </footer>
+  </body>
+</html>

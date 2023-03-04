@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <div class="container">
+    <h1 class="text-center mt-4">Welcome to <i class="fas fa-book"></i>Bookers!</h1>
+    
+    <div class="text-center">
+      
+        <p class"text-center mb-5">you can share and exchange your opinions , inpressions , and emotions<br>
+           about various books!</p>
+           
+           
+        <div class="mb-4">
+           <div class="mb-4">
+             <%= link_to("Log in", new_user_session_path, class: ' btn text-white bg-primary py-2 px-auto') %>
+            </div>
+           <div class="mb-4">
+             <%= link_to("Sign up", new_user_registration_path, class: ' btn text-white bg-success py-2 px-7') %>
+            </div>
+        </div>   
+        
+        
+    </div>
+  </div>
+
+</html>

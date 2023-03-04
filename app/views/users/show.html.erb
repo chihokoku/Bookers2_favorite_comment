@@ -1,0 +1,42 @@
+ <div class="container mt-4">
+    <div class="row">
+      
+        <div class="col-md-3">
+          <%= render 'user' %>
+          <%= render 'books/new' %>
+        </div>
+
+
+      <div class="col-md-8 offset-md-1">
+      <h1>Books</h1>
+      <table class="w-100">
+        <thead class="border-top border-bottom border-seconddark">
+          <tr>
+            <th colspan="1"></th><th class="py-3">Title</th><th>Body</th><th colspan="4"></th>
+          </tr>
+        </thead>
+        <% @books.each do |book| %>
+        <tbody>
+          <tr class="border-bottom border-seconddark">
+            <td class="pt-4">
+               <%= link_to user_path(book.user.id) do %>
+                 <p><%= link_to image_tag book.user.get_profile_image(100,100) %></p>
+               <% end %>
+            </td>
+            <td>
+              <span>
+                  <%= link_to book_path(book.id) do %>
+                    <%= book.title %>
+                  <% end %>
+              </span>
+            </td>
+            <td><span><%= book.body %></span></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+      </div>
+      
+      
+    </div>
+</div>
